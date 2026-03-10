@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Portal | Application Form</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/formiojs@4.13.1/dist/formio.full.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Form.io Core Library -->
+    <script src="https://cdn.jsdelivr.net/npm/formiojs@4.13.1/dist/formio.full.min.js"></script>
+</head>
+
+<body>
+    <!-- Dark Header matching the image -->
+    <header class="portal-header">
+        <div class="container header-inner">
+            <div class="header-left">
+                <span class="portal-logo-text">Ontario</span>
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="header-center">
+                <h1 class="header-title">Trillium Drug Program Application Form</h1>
+            </div>
+            <div class="header-right">
+                <nav class="portal-nav">
+                    <a href="#" class="nav-item">POC</a>
+                    <a href="#" class="nav-item">Français</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Form Section -->
+        <div class="container">
+            <div class="form-container-outer">
+                <div id="loading-state" class="loader-area">
+                    <div class="spinner"></div>
+                    <p>Loading application...</p>
+                </div>
+
+                <!-- Form.io Injection Point -->
+                <div id="formio"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dark Footer matching the image -->
+    <footer class="portal-footer">
+        <div class="footer-stripe"></div>
+        <div class="container footer-inner">
+            <nav class="footer-nav">
+                <a href="#">Accessibility</a>
+                <a href="#">Privacy</a>
+                <a href="#">Contact us</a>
+            </nav>
+            <p class="copyright">© King's Printer for Ontario, 2012–26</p>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
