@@ -14,7 +14,7 @@
     <!-- Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/formiojs@4.13.1/dist/formio.full.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/main.css">
 
     <!-- Form.io Core Library -->
     <script src="https://cdn.jsdelivr.net/npm/formiojs@4.13.1/dist/formio.full.min.js"></script>
@@ -34,11 +34,10 @@
                 </div>
             </div>
             <div class="header-center">
-                <h1 class="header-title">Trillium Drug Program Application Form</h1>
+                <h1 class="header-title">Trillium Drug Program Application Form POC</h1>
             </div>
             <div class="header-right">
                 <nav class="portal-nav">
-                    <a href="#" class="nav-item">POC</a>
                     <a href="#" class="nav-item">Français</a>
                 </nav>
             </div>
@@ -56,6 +55,61 @@
 
                 <!-- Form.io Injection Point -->
                 <div id="formio"></div>
+
+                <!-- Feedback Form (hidden initially) -->
+                <div id="feedback-section" class="feedback-section" style="display: none;">
+                    <div class="feedback-header">
+                        <h2>Thank you for using formsflow!</h2>
+                        <p>We'd love to hear your feedback to help us improve your experience.</p>
+                    </div>
+                    
+                    <form id="feedback-form" class="feedback-form">
+                        <div class="form-group">
+                            <label for="satisfaction">How satisfied are you with the form experience?</label>
+                            <select id="satisfaction" name="satisfaction" required class="form-control">
+                                <option value="">Please select...</option>
+                                <option value="very-satisfied">Very Satisfied</option>
+                                <option value="satisfied">Satisfied</option>
+                                <option value="neutral">Neutral</option>
+                                <option value="dissatisfied">Dissatisfied</option>
+                                <option value="very-dissatisfied">Very Dissatisfied</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ease-of-use">How easy was it to complete the form?</label>
+                            <select id="ease-of-use" name="ease-of-use" required class="form-control">
+                                <option value="">Please select...</option>
+                                <option value="very-easy">Very Easy</option>
+                                <option value="easy">Easy</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="difficult">Difficult</option>
+                                <option value="very-difficult">Very Difficult</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Any additional comments or suggestions? (Optional)</label>
+                            <textarea id="comments" name="comments" rows="4" class="form-control" 
+                                placeholder="Share your thoughts..."></textarea>
+                        </div>
+
+                        <div class="feedback-actions">
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thank You Popup -->
+        <div id="thank-you-popup" class="popup-overlay" style="display: none;">
+            <div class="popup-content">
+                <div class="popup-icon">✓</div>
+                <h2>Thank You!</h2>
+                <p>Your feedback has been submitted successfully.</p>
+                <p class="popup-subtext">We appreciate you taking the time to help us improve.</p>
+                <button id="close-popup" class="btn btn-primary">Close</button>
             </div>
         </div>
     </main>
@@ -73,8 +127,9 @@
         </div>
     </footer>
 
-    <!-- Logic -->
-    <script src="script.js"></script>
+    <!-- Application Scripts -->
+    <script src="scripts/formRenderer.js"></script>
+    <script src="scripts/feedback.js"></script>
 </body>
 
 </html>

@@ -1,13 +1,12 @@
 /**
- * Modern Business Portal | Direct Form.io Integration
+ * Form Renderer - Handles Form.io form loading and submission
  */
 
-const FORM_URL = "https://trial.formsflow.cloud/formio/kares-ontariotrilliumdrugprogramapplication";
+const FORM_URL = "https://forms-flow-forms-prod.aot-technologies.com/ffpocmobile-healthcarepocpatientintakevirtualcareregistration";
 
-window.addEventListener('load', () => {
-    initForm();
-});
-
+/**
+ * Initialize and render the Form.io form
+ */
 function initForm() {
     const formElement = document.getElementById('formio');
     const loadingState = document.getElementById('loading-state');
@@ -30,8 +29,6 @@ function initForm() {
         // Form is successfully loaded and rendered
         console.log("Form.io: Patient intake form rendered.");
 
-        // Custom branding or post-render adjustments could go here
-
         // Hide loader after a tiny buffer for smooth appearance
         setTimeout(() => {
             if (loadingState) {
@@ -43,7 +40,10 @@ function initForm() {
         // Handle submission
         form.on('submit', (submission) => {
             console.log("Submission successful:", submission);
-            // You can redirect or show a custom success message here
+            // Show feedback form after main form submission
+            if (typeof showFeedbackForm === 'function') {
+                showFeedbackForm();
+            }
         });
 
         // Optional: track field changes
@@ -63,3 +63,8 @@ function initForm() {
         }
     });
 }
+
+// Initialize form when page loads
+window.addEventListener('load', () => {
+    initForm();
+});
