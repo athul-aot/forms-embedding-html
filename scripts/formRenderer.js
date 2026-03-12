@@ -2,8 +2,9 @@
  * Form Renderer - Handles Form.io form loading and submission
  */
 
-// const FORM_URL = "https://forms-flow-forms-prod.aot-technologies.com/ffpocmobile-healthcarepocpatientintakevirtualcareregistration";
-const FORM_URL = "https://trial.formsflow.cloud/formio/kares-ontariotrilliumdrugprogramapplication"
+const FORM_URL = "https://forms-flow-forms-prod.aot-technologies.com/ffpocmobile-healthcarepocpatientintakevirtualcareregistration";
+// const FORM_URL = "https://trial.formsflow.cloud/formio/kares-ontariotrilliumdrugprogramapplication"
+
 /**
  * Initialize and render the Form.io form
  */
@@ -37,18 +38,33 @@ function initForm() {
             formElement.style.opacity = '1';
         }, 300);
 
-        // Handle submission
+        // Handle submission - formsflow automatically calls submission and application creation APIs
         form.on('submit', (submission) => {
-            console.log("Submission successful:", submission);
-            // Show feedback form after main form submission
-            if (typeof showFeedbackForm === 'function') {
-                showFeedbackForm();
-            }
+            console.log("Form submitted - waiting for APIs...", submission);
+        });
+
+        // Listen for submitDone event which fires after submission API completes
+        form.on('submitDone', (submission) => {
+            console.log("Submission API completed:", submission);
+            // Wait a bit for create API to be called, then redirect regardless
+            setTimeout(() => {
+                console.log("Redirecting to feedback page...");
+                window.location.href = 'pages/feedback.html';
+            }, 2000);
+        });
+
+        // Listen for error events
+        form.on('submitError', (error) => {
+            console.error("Submission error:", error);
+            // Redirect even on error
+            setTimeout(() => {
+                window.location.href = 'pages/feedback.html';
+            }, 1000);
         });
 
         // Optional: track field changes
-        form.on('change', (changed) => {
-            // console.log('Field changed:', changed);
+        form.on('change', () => {
+            // console.log('Field changed');
         });
 
     }).catch((err) => {

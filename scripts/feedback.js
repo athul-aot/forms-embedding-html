@@ -94,8 +94,10 @@ function hideThankYouPopup() {
         popup.classList.remove('show');
         setTimeout(() => {
             popup.style.display = 'none';
-            // Redirect to home page (reload the page to show the form again)
-            window.location.reload();
+            // Redirect to home page
+            window.location.href = window.location.pathname.includes('/pages/') 
+                ? '../index.html' 
+                : 'index.html';
         }, 300);
     }
 }
